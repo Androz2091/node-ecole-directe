@@ -19,7 +19,7 @@
 ```js
 const EcoleDirecte = require("node-ecole-directe");
 const session = new EcoleDirecte.Session();
-const account = session.connexion("identifiant", "mot-de-passe");
+const account = await session.connexion("identifiant", "mot-de-passe");
 // Vous êtes maintenant connecté à école directe !
 
 console.log(account.type); // Famille
@@ -77,7 +77,7 @@ console.log(cahierDeTexteAntoine[0].devoirs);
 ```js
 const EcoleDirecte = require("node-ecole-directe");
 const session = new EcoleDirecte.Session();
-const account = session.connexion("identifiant", "mot-de-passe");
+const account = await session.connexion("identifiant", "mot-de-passe");
 // Vous êtes maintenant connecté à école directe !
 
 console.log(account.type); // Élève
@@ -132,7 +132,7 @@ console.log(cahierDeTexteClotilde[0].devoirs);
 ```js
 const EcoleDirecte = require("node-ecole-directe");
 const session = new EcoleDirecte.Session();
-const account = session.connexion("identifiant", "mot-de-passe");
+const account = await session.connexion("identifiant", "mot-de-passe");
 // Vous êtes maintenant connecté à école directe !
 
 console.log(account.type); // Famille
@@ -159,7 +159,7 @@ const vieScolaire = await account.members[0].fetchVieScolaire();
 ```js
 const EcoleDirecte = require("node-ecole-directe");
 const session = new EcoleDirecte.Session();
-const account = session.connexion("identifiant", "mot-de-passe");
+const account = await session.connexion("identifiant", "mot-de-passe");
 // Vous êtes maintenant connecté à école directe !
 
 console.log(account.type); // Élève
