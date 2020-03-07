@@ -1,7 +1,7 @@
-# Ecole Directe
+# Node Ecole Directe
 
-[![downloadsBadge](https://img.shields.io/npm/dt/ecole-directe?style=for-the-badge)](https://npmjs.com/ecole-directe)
-[![versionBadge](https://img.shields.io/npm/v/ecole-directe?style=for-the-badge)](https://npmjs.com/ecole-directe)
+[![downloadsBadge](https://img.shields.io/npm/dt/node-ecole-directe?style=for-the-badge)](https://npmjs.com/node-ecole-directe)
+[![versionBadge](https://img.shields.io/npm/v/node-ecole-directe?style=for-the-badge)](https://npmjs.com/node-ecole-directe)
 [![patreonBadge](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2FAndroz2091%2Fpledges&style=for-the-badge)](https://patreon.com/Androz2091)
 
 ## Fonctionnalités
@@ -17,7 +17,7 @@
 ### Compte Famille
 
 ```js
-const EcoleDirecte = require("ecole-directe");
+const EcoleDirecte = require("node-ecole-directe");
 const session = new EcoleDirecte.Session();
 const account = session.connexion("identifiant", "mot-de-passe");
 // Vous êtes maintenant connecté à école directe !
@@ -75,7 +75,7 @@ console.log(cahierDeTexteAntoine[0].devoirs);
 ### Compte Élève
 
 ```js
-const EcoleDirecte = require("ecole-directe");
+const EcoleDirecte = require("node-ecole-directe");
 const session = new EcoleDirecte.Session();
 const account = session.connexion("identifiant", "mot-de-passe");
 // Vous êtes maintenant connecté à école directe !
@@ -130,7 +130,7 @@ console.log(cahierDeTexteClotilde[0].devoirs);
 ### Compte Famille
 
 ```js
-const EcoleDirecte = require("ecole-directe");
+const EcoleDirecte = require("node-ecole-directe");
 const session = new EcoleDirecte.Session();
 const account = session.connexion("identifiant", "mot-de-passe");
 // Vous êtes maintenant connecté à école directe !
@@ -157,7 +157,7 @@ const vieScolaire = await account.members[0].fetchVieScolaire();
 ### Compte Élève
 
 ```js
-const EcoleDirecte = require("ecole-directe");
+const EcoleDirecte = require("node-ecole-directe");
 const session = new EcoleDirecte.Session();
 const account = session.connexion("identifiant", "mot-de-passe");
 // Vous êtes maintenant connecté à école directe !
