@@ -1,0 +1,25 @@
+{
+  "name": "ecole-directe",
+  "version": "1.0.0",
+  "description": "Connexion à école directe sans passer par l'interface web!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Androz2091/ecole-directe.git"
+  },
+  "author": "Androz2091",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Androz2091/ecole-directe/issues"
+  },
+  "homepage": "https://github.com/Androz2091/ecole-directe#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  }
+}
