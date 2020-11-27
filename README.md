@@ -32,36 +32,6 @@ console.log(account);
     }
 ]
 */
-
-// Récupération des notes de Clotilde
-const notesDeClotilde = await account.fetchNotes();
-console.log(notesDeClotilde.notes.length); // 23
-
-// Récupération du bilan du premier trimestre de Clotilde
-const notesDeClotideTrimestre1 = notesDeClotilde.periodes.find(p =>
-  p.dateDebut.startsWith("2019")
-);
-console.log(notesDeClotideTrimestre1.ensembleMatieres.moyenneGenerale); // 18
-
-// Récupération du cahier de texte de Clotilde
-const cahierDeTexteClotilde = await account.fetchCahierDeTexte();
-console.log(cahierDeTexteClotilde[0].day); // 2020-03-09
-console.log(cahierDeTexteClotilde[0].devoirs);
-/*
-[
-    {
-        matiere: 'MATHEMATIQUES',
-        codeMatiere: 'MATHS',
-        aFaire: true,
-        idDevoir: 10966,
-        documentsAFaire: false,
-        donneLe: '2020-02-20',
-        effectue: false,
-        interrogation: false,
-        rendreEnLigne: false
-    }
-]
-*/
 ```
 
 ## Liste des méthodes
