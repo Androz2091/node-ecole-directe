@@ -1,6 +1,5 @@
 const fetch = require("node-fetch");
 const Eleve = require("./Eleve");
-const Family = require("./Family");
 
 module.exports = class Session {
     constructor() {}
@@ -23,28 +22,12 @@ module.exports = class Session {
                 }
             );
             const data = await res.json();
-            if (data.message === "Identifiant et/ou mot de passe invalide !") {
-                reject("Invalid credentials");
-            }
+            if (data.message === "Identifiant et/ou mot de passe invalide !") return reject("Invalid credentials");
             const account = data.data.accounts[0];
-            this.accountType =
-                account.typeCompte === "1"
-                    ? "Famille"
-                    : account.typeCompte === "E"
-                    ? "Élève"
-                    : null;
-            if (!this.accountType) {
-                reject("This type of account isn't supported");
-            } else if (this.accountType === "Famille") {
-                const family = new Family(this, data.data);
-                await family.fetch(data.token);
-                resolve(family);
-            } else if (this.accountType === "Élève") {
-                const eleve = new Eleve(this, account);
-                this.token = data.token;
-                resolve(eleve);
-            }
-            resolve(this);
+            if (account.typeCompte !== 'E') return reject('Account type not supported');
+            const eleve = new Eleve(this, account);
+            this.token = data.token;
+            resolve(eleve);
         });
     }
 
