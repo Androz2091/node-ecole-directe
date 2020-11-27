@@ -63,4 +63,4 @@ const vieScolaire = await account.fetchVieScolaire();
 
 ## Crédits
 
-Merci à [Max_steel91.js#8659](https://github.com/Maxsteel91Dev) pour son aide ainsi [Enertix Le Vrai#0001](https://github.com/Christian-Martins) pour m'avoir prêté ses identifiants pour que effectuer la totalité des tests!
+Merci à [Max_steel91.js#8659](https://github.com/Maxsteel91Dev) et [Enertix Le Vrai#0001](https://github.com/Christian-Martins) pour le prêt de leurs identifiants pour effectuer la totalité des tests!
