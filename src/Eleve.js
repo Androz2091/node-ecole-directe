@@ -1,16 +1,16 @@
 module.exports = class Eleve {
     constructor(session, data, family) {
-        console.log(data)
         this.type = "Élève";
         // Default values
         this.session = session;
         this.id = data.id;
         this.prenom = data.prenom;
         this.nom = data.nom;
-        this.sexe = data.profile.sexe;
+        this.sexe = data.sexe;
         this.classe = data.classe
             ? data.classe.libelle
             : data.profile.classe.libelle;
+        if (family) this.family = family;
     }
 
     async fetchNotes() {
