@@ -6,7 +6,7 @@
 
 ## Fonctionnalités
 
-🔐 Authentification pour les comptes **Élèves**  
+🔐 Authentification pour les comptes **Élèves** et **Familles** 
 📑 Récupération des **notes**  
 📚 Récupération des **devoirs**  
 📅 Récupération des **emplois du temps**  
