@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 const Eleve = require("./Eleve");
-const Family = require("./Famille");
+const Famille = require("./Famille");
 
 module.exports = class Session {
     constructor() {}
@@ -31,7 +31,7 @@ module.exports = class Session {
                     : compte.typeCompte === "E"
                     ? "Élève"
                     : null;
-            switch (typeCompte) {
+            switch (this.typeCompte) {
                 case 'Famille':
                     const famille = new Famille(this, data.data);
                     await famille.fetch(data.token);

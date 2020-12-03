@@ -14,14 +14,17 @@
 
 ## Exemples
 
+⚠️ Dans les exemples suivants, le compte utilisé est un compte **Élève**. Pour utiliser un compte Famille, il faut que vous précisiez l'élève.  
+Par exemple `compte.fetchNotes()` deviendra `compte.eleves[0].fetchNotes()`, `compte.eleves[1].fetchNotes()`, etc.
+
 ```js
 const EcoleDirecte = require("node-ecole-directe");
 const session = new EcoleDirecte.Session();
 (async () => {
-const account = await session.connexion("identifiant", "mot-de-passe");
+const compte = await session.connexion("identifiant", "mot-de-passe");
 // Vous êtes maintenant connecté à école directe !
 
-console.log(account);
+console.log(compte);
 /*
 [
     {
@@ -43,112 +46,27 @@ console.log(account);
 const EcoleDirecte = require("node-ecole-directe");
 const session = new EcoleDirecte.Session();
 (async () => {
-const account = await session.connexion("identifiant", "mot-de-passe");
+const compte = await session.connexion("identifiant", "mot-de-passe");
 // Vous êtes maintenant connecté à école directe !
 
 // Récupération des notes
-const notes = await account.fetchNotes();
+const notes = await compte.fetchNotes();
 
 // Récupération de l'emploi du temps
-const emploiDuTemps = await account.fetchEmploiDuTemps(); // Sans date spécifiée
-const emploiDuTempsDu18Au22 = await account.fetchEmploiDuTemps(
+const emploiDuTemps = await compte.fetchEmploiDuTemps(); // Sans date spécifiée
+const emploiDuTempsDu18Au22 = await compte.fetchEmploiDuTemps(
   "2020-03-18",
   "2020-03-22"
 ); // Avec une date de début et une date de fin
 
 // Récupération du cahier de texte
-const cahierDeTexte = await account.fetchCahierDeTexte();
-const cahierDeTexteJourSpecifique = await account.fetchCahierDeTexteJour("2020-11-01");
+const cahierDeTexte = await compte.fetchCahierDeTexte();
+const cahierDeTexteJourSpecifique = await compte.fetchCahierDeTexteJour("2020-11-01");
 
 // Récupération des éléments de vie scolaire (retards, absences, etc...)
-const vieScolaire = await account.fetchVieScolaire();
+const vieScolaire = await compte.fetchVieScolaire();
 })
 ```
-
-## Exemple Espace Eleve
-```js
-const EcoleDirecte = require("node-ecole-directe");
-const session = new EcoleDirecte.Session();
-(async () => {
-    const account = await session.connexion("identifiant", "mot-de-passe");
-    // Vous êtes maintenant connecté à école directe !
-
-    console.log(account.type); // Eleve
-
-// Récupération des notes
-    const notes = await account.fetchNotes();
-// Récupération de l'emploi du temps
-    const emploiDuTemps = await account.fetchEmploiDuTemps(); // Sans date spécifiée
-    const emploiDuTempsDu18Au22 = await account.fetchEmploiDuTemps(
-        "2020-03-18",
-        "2020-03-22"
-    ); // Avec une date de début et une date de fin
-
-// Récupération du cahier de texte
-    const cahierDeTexte = await account.fetchCahierDeTexte();
-    const cahierDeTexteJourSpecifique = await account.fetchCahierDeTexteJour("2020-11-01");
-
-// Récupération des éléments de vie scolaire (retards, absences, etc...)
-    const vieScolaire = await account.fetchVieScolaire();
-})()
-``` 
-
-## Exemple Espace Famille
-```js
-const EcoleDirecte = require("node-ecole-directe");
-const session = new EcoleDirecte.Session();
-(async () => {
-    const account = await session.connexion("identifiant", "mot-de-passe");
-    // Vous êtes maintenant connecté à école directe !
-    console.log(account.type); // Famille
-    console.log(account.members);
-    /*
-    [
-        {
-            prenom: "Clotilde",
-            nom: "Fernandez",
-            sexe: "F",
-            classe: "Cinquième D"
-        },
-        {
-            prenom: "Antoine",
-            nom: "Martinez",
-            sexe: "M",
-            classe: "Sixième C"
-        }
-    ]
-    */
-    // Récupération des notes de Clotilde
-    const notesDeClotilde = await account.members[0].fetchNotes();
-    console.log(notesDeClotilde.notes.length); // 23
-
-    // Récupération du bilan du premier trimestre de Clotilde
-    const notesDeClotideTrimestre1 = notesDeClotilde.periodes.find(p =>
-        p.dateDebut.startsWith("2020")
-    );
-    console.log(notesDeClotideTrimestre1.ensembleMatieres.moyenneGenerale); // 18
-    // Récupération du cahier de texte d'Antoine
-    const cahierDeTexteAntoine = await account.members[1].fetchCahierDeTexte();
-    console.log(cahierDeTexteAntoine[0].day); // 2020-03-09
-    console.log(cahierDeTexteAntoine[0].devoirs);
-    /*
-    [
-        {
-            matiere: 'MATHEMATIQUES',
-            codeMatiere: 'MATHS',
-            aFaire: true,
-            idDevoir: 10966,
-            documentsAFaire: false,
-            donneLe: '2020-02-20',
-            effectue: false,
-            interrogation: false,
-            rendreEnLigne: false
-        }
-    ]
-    */
-})()
-```
-
 
 ## Crédits
 
