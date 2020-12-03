@@ -1,6 +1,6 @@
 module.exports = {
     Session: require("./src/Session"),
-    Family: require("./src/Family"),
+    Famille: require("./src/Famille"),
     Eleve: require("./src/Eleve"),
     version: require("./package.json").version
 };

@@ -4,17 +4,15 @@ const Session = require("./Session");
 
 module.exports = class Family {
     constructor(session, data) {
-        this.type = "Famille";
         this.session = session;
         this.data = data;
     }
 
     // Fetch les élèves
     fetch(token) {
-        const membersData = this.data.accounts[0].profile.eleves;
-        this.email = this.data.accounts[0].email;
-        this.members = membersData.map(
-            memberData => new Eleve(this.session, memberData, this)
+        const elevesData = this.data.accounts[0].profile.eleves;
+        this.eleves = elevesData.map(
+            eleveData => new Eleve(this.session, eleveData, this)
         );
         return new Promise(async resolve => {
             const data = await this.session.request(

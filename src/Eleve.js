@@ -1,6 +1,5 @@
 module.exports = class Eleve {
     constructor(session, data, family) {
-        this.type = "Élève";
         // Default values
         this.session = session;
         this.id = data.id;
