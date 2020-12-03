@@ -1,6 +1,6 @@
 {
   "name": "node-ecole-directe",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Connexion à école directe sans passer par l'interface web!",
   "main": "index.js",
   "scripts": {
