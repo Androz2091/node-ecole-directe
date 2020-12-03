@@ -70,4 +70,4 @@ const session = new EcoleDirecte.Session();
 
 ## Crédits
 
-Merci à [Derp#5777](https://github.com/Derpinou), [Max_steel91.js#8659](https://github.com/Maxsteel91Dev) et [Enertix Le Vrai#0001](https://github.com/Christian-Martins) pour le prêt de leurs identifiants pour effectuer la totalité des tests!
+Merci à [Derp#5777](https://github.com/Derpinou), [R3dlessX](https://github.com/R3dlessX) et [Enertix Le Vrai#0001](https://github.com/Christian-Martins) pour le prêt de leurs identifiants pour effectuer la totalité des tests!
