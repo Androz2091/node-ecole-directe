@@ -26,7 +26,7 @@ module.exports = class Session {
             if (data.message === "Identifiant et/ou mot de passe invalide !") return reject("Invalid credentials");
             const compte = data.data.accounts[0];
             this.typeCompte =
-                compte.typeCompte === "1"
+                (compte.typeCompte === "1" || compte.typeCompte === '2')
                     ? "Famille"
                     : compte.typeCompte === "E"
                     ? "Élève"
