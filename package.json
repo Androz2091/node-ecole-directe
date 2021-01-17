@@ -1,6 +1,6 @@
 {
   "name": "node-ecole-directe",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Connexion à école directe sans passer par l'interface web!",
   "main": "index.js",
   "funding": "https://github.com/Androz2091/node-ecole-directe?sponsor=1",
