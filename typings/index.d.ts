@@ -35,5 +35,6 @@ declare module 'node-ecole-directe' {
 
         public session: Session;
         public data: any;
+        public eleves: Eleve[];
     }
 }

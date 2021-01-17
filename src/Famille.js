@@ -18,7 +18,6 @@ module.exports = class Family {
                 token
             );
             this.session.token = data.token;
-            this.etablissement = data.data[0];
             resolve();
         });
     }
