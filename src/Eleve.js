@@ -13,6 +13,7 @@ module.exports = class Eleve {
         this.nom = 'nom' in data ? data.nom : null;
         this.sexe = 'profile' in data ? data.profile.sexe : 'sexe' in data ? data.sexe : null;
         this.etablissement = 'nomEtablissement' in data ? data.nomEtablissement : null;
+        this.classe = 'profile' in data ? data.profile.classe.libelle : 'classe' in data ? data.classe.libelle : null;
     }
 
     async fetchNotes() {

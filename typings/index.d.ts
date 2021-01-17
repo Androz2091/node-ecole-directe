@@ -21,6 +21,7 @@ declare module 'node-ecole-directe' {
         public nom: string;
         public sexe: Sexe;
         public etablissement: string;
+        public classe: string;
 
         public fetchNotes (): Promise<unknown[]>;
         public fetchCahierDeTexte (): Promise<unknown[]>;
