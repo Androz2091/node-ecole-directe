@@ -36,7 +36,7 @@ const session = new EcoleDirecte.Session();
         }
     ]
     */
-})
+})();
 ```
 
 ## Liste des méthodes
@@ -65,7 +65,7 @@ const session = new EcoleDirecte.Session();
 
     // Récupération des éléments de vie scolaire (retards, absences, etc...)
     const vieScolaire = await compte.fetchVieScolaire();
-})
+})();
 ```
 
 ## Crédits
