@@ -38,7 +38,7 @@ module.exports = class Session {
                     resolve(famille);
                     break;
                 case 'Élève':
-                    const eleve = new Eleve(this, account);
+                    const eleve = new Eleve(this, compte);
                     this.token = data.token;
                     resolve(eleve);
                     break;
