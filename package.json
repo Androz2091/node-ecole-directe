@@ -4,6 +4,7 @@
   "description": "Connexion à école directe sans passer par l'interface web!",
   "main": "index.js",
   "funding": "https://github.com/Androz2091/node-ecole-directe?sponsor=1",
+  "types": "typings/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
