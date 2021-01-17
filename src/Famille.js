@@ -1,6 +1,4 @@
-const fetch = require("node-fetch");
 const Eleve = require("./Eleve");
-const Session = require("./Session");
 
 module.exports = class Family {
     constructor(session, data) {

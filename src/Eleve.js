@@ -2,14 +2,17 @@ module.exports = class Eleve {
     constructor(session, data, family) {
         // Default values
         this.session = session;
-        this.id = data.id;
-        this.prenom = data.prenom;
-        this.nom = data.nom;
-        this.sexe = data.sexe;
-        this.classe = data.classe
-            ? data.classe.libelle
-            : data.profile.classe.libelle;
+        this.data = data;
         if (family) this.family = family;
+
+        this._patch(data);
+    }
+
+    _patch (data) {
+        this.prenom = 'prenom' in data ? data.prenom : null;
+        this.nom = 'nom' in data ? data.nom : null;
+        this.sexe = 'profile' in data ? data.profile.sexe : 'sexe' in data ? data.sexe : null;
+        this.etablissement = 'nomEtablissement' in data ? data.nomEtablissement : null;
     }
 
     async fetchNotes() {
@@ -19,8 +22,7 @@ module.exports = class Eleve {
                     this.id +
                     "/notes.awp?verbe=get&"
             );
-            this.notes = data.data;
-            resolve(this.notes);
+            resolve(data.data);
         });
     }
 
