@@ -11,7 +11,6 @@ module.exports = class Session {
                 "https://api.ecoledirecte.com/v3/login.awp",
                 {
                     method: "POST",
-                    headers: this.headers,
                     body:
                         "data=" +
                         encodeURI(
@@ -57,7 +56,6 @@ module.exports = class Session {
             };
             const res = await fetch(url, {
                 method: "POST",
-                headers: this.headers,
                 body: "data=" + encodeURI(JSON.stringify(finalPayload))
             });
             const data = await res.json();
