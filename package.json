@@ -1,6 +1,6 @@
 {
   "name": "node-ecole-directe",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "API pour intéragir avec Ecole Directe",
   "main": "index.js",
   "funding": "https://github.com/Androz2091/node-ecole-directe?sponsor=1",
