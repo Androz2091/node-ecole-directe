@@ -17,6 +17,12 @@
   "bugs": {
     "url": "https://github.com/Androz2091/node-ecole-directe/issues"
   },
+  "keywords": [
+    "api",
+    "ecole directe",
+    "france",
+    "pronote"
+  ],
   "homepage": "https://github.com/Androz2091/node-ecole-directe#readme",
   "dependencies": {
     "node-fetch": "^2.6.0"
