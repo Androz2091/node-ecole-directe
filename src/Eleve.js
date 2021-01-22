@@ -9,6 +9,7 @@ module.exports = class Eleve {
     }
 
     _patch (data) {
+        this.id = data.id;
         this.prenom = 'prenom' in data ? data.prenom : null;
         this.nom = 'nom' in data ? data.nom : null;
         this.sexe = 'profile' in data ? data.profile.sexe : 'sexe' in data ? data.sexe : null;
