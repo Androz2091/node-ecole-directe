@@ -17,6 +17,7 @@ declare module 'node-ecole-directe' {
         public data: any;
         public family?: Famille;
 
+        public id: string;
         public prenom: string;
         public nom: string;
         public sexe: Sexe;
