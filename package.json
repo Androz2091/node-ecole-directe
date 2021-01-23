@@ -1,33 +1,33 @@
 {
-  "name": "node-ecole-directe",
-  "version": "1.3.2",
-  "description": "API pour intéragir avec Ecole Directe",
-  "main": "index.js",
-  "funding": "https://github.com/Androz2091/node-ecole-directe?sponsor=1",
-  "types": "typings/index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Androz2091/node-ecole-directe.git"
-  },
-  "author": "Androz2091",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Androz2091/node-ecole-directe/issues"
-  },
-  "keywords": [
-    "api",
-    "ecole directe",
-    "france",
-    "pronote"
-  ],
-  "homepage": "https://github.com/Androz2091/node-ecole-directe#readme",
-  "dependencies": {
-    "node-fetch": "^2.6.0"
-  },
-  "devDependencies": {
-    "prettier": "^1.19.1"
-  }
+    "name": "node-ecole-directe",
+    "version": "1.3.2",
+    "description": "API pour intéragir avec Ecole Directe",
+    "main": "index.js",
+    "funding": "https://github.com/Androz2091/node-ecole-directe?sponsor=1",
+    "types": "typings/index.d.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Androz2091/node-ecole-directe.git"
+    },
+    "author": "Androz2091",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Androz2091/node-ecole-directe/issues"
+    },
+    "keywords": [
+        "api",
+        "ecole directe",
+        "france",
+        "pronote"
+    ],
+    "homepage": "https://github.com/Androz2091/node-ecole-directe#readme",
+    "dependencies": {
+        "node-fetch": "^2.6.0"
+    },
+    "devDependencies": {
+        "prettier": "^1.19.1"
+    }
 }
