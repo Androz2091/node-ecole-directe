@@ -22,7 +22,7 @@ module.exports = class Session {
                 }
             );
             const data = await res.json();
-            if (data.message === "Identifiant et/ou mot de passe invalide !") return reject("Invalid credentials");
+            if (!data.token) return reject("Invalid credentials");
             const compte = data.data.accounts[0];
             this.typeCompte =
                 (compte.typeCompte === "1" || compte.typeCompte === '2')
