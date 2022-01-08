@@ -7,29 +7,56 @@ module.exports = class Session {
   constructor() {}
 
   async connexion(identifiant, motdepasse) {
-    await request(
-      {
-        method: "POST",
-        url: "https://api.ecoledirecte.com/v3/login.awp",
-        headers: {
-          "user-agent":
-            "Mozilla/5.0 (X11; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0",
+    return new Promise(async (resolve, reject) => {
+      request(
+        {
+          method: "POST",
+          url: "https://api.ecoledirecte.com/v3/login.awp",
+          headers: {
+            "user-agent":
+              "Mozilla/5.0 (X11; Linux x86_64; rv:77.0) Gecko/20100101 Firefox/77.0",
+          },
+          body:
+            "data=" +
+            encodeURI(
+              JSON.stringify({
+                identifiant,
+                motdepasse,
+              })
+            ),
         },
-        body:
-          "data=" +
-          encodeURI(
-            JSON.stringify({
-              identifiant,
-              motdepasse,
-            })
-          ),
-      },
-      (err, httpResponse, body) => {
-        if (err) {
-          return console.error("error:", err);
+        (err, httpResponse, body) => {
+          if (err) {
+            return console.error("error:", err);
+          }
+
+          const data = JSON.parse(body);
+          if (!data.token) reject("Erreur");
+          const compte = data.data.accounts[0];
+          console.log(compte);
+          this.typeCompte =
+            compte.typeCompte === "1" || compte.typeCompte === "2"
+              ? "Famille"
+              : compte.typeCompte === "E"
+              ? "Élève"
+              : null;
+
+          switch (this.typeCompte) {
+            case "Famille":
+              const famille = new Famille(this, data.data);
+            // NOT SURE TO USE
+            case "Élève":
+              const eleve = new Eleve(this, compte);
+              this.token = data.token;
+              resolve(eleve);
+              break;
+            default:
+              reject("Account type unsupported.");
+              break;
+          }
         }
-      }
-    );
+      );
+    });
     // new Promise(async (resolve, reject) => {
     //     XMLHttpRequest
     //   console.log("test");

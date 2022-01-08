@@ -16,9 +16,8 @@ async function testAllFunctions() {
 
   console.log(account);
 
-  console.log(
-    "etsedjfnqesjiobqehifvqeoluhfbqseojhfbaQohjfbApubohaegbpfihaqebfpv"
-  );
+  console.log("Account fetch");
+
   //   const notes = await account.fetchNotes();
 
   //   const notesPremierSemestre = notes.periodes.find(
