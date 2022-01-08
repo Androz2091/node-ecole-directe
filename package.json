@@ -25,7 +25,8 @@
     ],
     "homepage": "https://github.com/Androz2091/node-ecole-directe#readme",
     "dependencies": {
-        "node-fetch": "^2.6.0"
+        "node-fetch": "^2.6.0",
+        "request": "^2.88.2"
     },
     "devDependencies": {
         "dotenv": "^8.2.0",
