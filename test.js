@@ -18,22 +18,26 @@ async function testAllFunctions() {
 
   console.log("Account fetch");
 
-  //   const notes = await account.fetchNotes();
+  const notes = await account.fetchNotes();
 
-  //   const notesPremierSemestre = notes.periodes.find(
-  //     (periode) => periode.periode === "1er Semestre"
-  //   ).ensembleMatieres;
+  const notesPremierSemestre = notes.periodes.find(
+    (periode) => periode.periode === "1er Trimestre"
+  ).ensembleMatieres;
 
-  //   const moyenneGenerale = notesPremierSemestre.moyenneGenerale;
-  //   const moyenneClasse = notesPremierSemestre.moyenneClasse;
-  //   const rang = notesPremierSemestre.rang;
+  console.log(notesPremierSemestre);
 
-  //   console.log(moyenneGenerale);
-  //   console.log(moyenneClasse);
-  //   console.log(rang);
+  const moyenneGenerale = notesPremierSemestre.moyenneGenerale;
+  const moyenneClasse = notesPremierSemestre.moyenneClasse;
+  const appreciationPP = notesPremierSemestre.appreciationPP;
 
-  //   const obtenirMoyenneMatiere = (nomMatiere) =>
-  //     notesPremierSemestre.disciplines.find(
-  //       (dis) => dis.discipline === nomMatiere
-  //     ).moyenne;
+  console.log(moyenneGenerale);
+  console.log(moyenneClasse);
+  console.log(appreciationPP);
+
+  const obtenirMoyenneMatiere = (nomMatiere) =>
+    notesPremierSemestre.disciplines.find(
+      (dis) => dis.discipline === nomMatiere
+    ).moyenne;
+
+  console.log(obtenirMoyenneMatiere("HISTOIRE-GEOGRAPHIE"));
 }
