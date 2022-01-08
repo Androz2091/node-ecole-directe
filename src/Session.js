@@ -1,4 +1,5 @@
 const fetch = require("node-fetch");
+const axios = require("axios");
 const Eleve = require("./Eleve");
 const Famille = require("./Famille");
 
@@ -7,22 +8,14 @@ module.exports = class Session {
 
     connexion(identifiant, motdepasse) {
         return new Promise(async (resolve, reject) => {
-            const res = await fetch(
-                "https://api.ecoledirecte.com/v3/login.awp",
-                {
-                    method: "POST",
-                    body:
-                        "data=" +
-                        encodeURI(
-                            JSON.stringify({
-                                identifiant,
-                                motdepasse
-                            })
-                        )
-                }
+            const body = "data=" + JSON.stringify({identifiant,motdepasse})
+            const res = await axios.post(
+                "https://api.ecoledirecte.com/v3/login.awp", body
             );
-            const data = await res.json();
-            if (!data.token) return reject("Invalid credentials");
+            const data = await res.data
+        try {
+            if (!data.token) throw new Error(data.message);
+        } catch (e) { console.error(e); return}
             const compte = data.data.accounts[0];
             this.typeCompte =
                 (compte.typeCompte === "1" || compte.typeCompte === '2')
@@ -45,7 +38,7 @@ module.exports = class Session {
                     reject("This type of account isn't supported");
                     break;
             }
-        });
+        })
     }
 
     async request(url, token, payload = {}) {
@@ -54,11 +47,9 @@ module.exports = class Session {
                 ...payload,
                 ...{ token: token || this.token }
             };
-            const res = await fetch(url, {
-                method: "POST",
-                body: "data=" + encodeURI(JSON.stringify(finalPayload))
-            });
-            const data = await res.json();
+            const res = await axios.post(url, 
+                "data=" + JSON.stringify(finalPayload));
+            const data = await res.data
             resolve(data);
         });
     }
