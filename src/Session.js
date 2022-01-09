@@ -1,35 +1,32 @@
 const fetch = require("node-fetch");
+const axios = require("axios");
 const Eleve = require("./Eleve");
 const Famille = require("./Famille");
 
 module.exports = class Session {
-    constructor() {}
+    constructor() { }
 
     connexion(identifiant, motdepasse) {
         return new Promise(async (resolve, reject) => {
-            const res = await fetch(
-                "https://api.ecoledirecte.com/v3/login.awp",
-                {
-                    method: "POST",
-                    body:
-                        "data=" +
-                        encodeURI(
-                            JSON.stringify({
-                                identifiant,
-                                motdepasse
-                            })
-                        )
-                }
+            let mdp = motdepasse
+            let id = identifiant
+            id.indexOf("&") ? id = id.replace(/&/g, "%26") : id = identifiant 
+            mdp.indexOf("&") ? mdp = mdp.replace(/&/g, "%26") : mdp = motdepasse
+            const body = "data=" + JSON.stringify({ identifiant: id, motdepasse: mdp })
+            const res = await axios.post(
+                "https://api.ecoledirecte.com/v3/login.awp", body
             );
-            const data = await res.json();
-            if (!data.token) return reject("Invalid credentials");
+            const data = await res.data
+            try {
+                if (!data.token) throw new Error(data.message);
+            } catch (e) { console.error(e); return }
             const compte = data.data.accounts[0];
             this.typeCompte =
                 (compte.typeCompte === "1" || compte.typeCompte === '2')
                     ? "Famille"
                     : compte.typeCompte === "E"
-                    ? "Élève"
-                    : null;
+                        ? "Élève"
+                        : null;
             switch (this.typeCompte) {
                 case 'Famille':
                     const famille = new Famille(this, data.data);
@@ -45,7 +42,7 @@ module.exports = class Session {
                     reject("This type of account isn't supported");
                     break;
             }
-        });
+        })
     }
 
     async request(url, token, payload = {}) {
@@ -54,11 +51,9 @@ module.exports = class Session {
                 ...payload,
                 ...{ token: token || this.token }
             };
-            const res = await fetch(url, {
-                method: "POST",
-                body: "data=" + encodeURI(JSON.stringify(finalPayload))
-            });
-            const data = await res.json();
+            const res = await axios.post(url,
+                "data=" + JSON.stringify(finalPayload));
+            const data = await res.data
             resolve(data);
         });
     }
