@@ -33,7 +33,6 @@ module.exports = class Session {
           const data = JSON.parse(body);
           if (!data.token) reject("Erreur");
           const compte = data.data.accounts[0];
-          console.log(compte);
           this.typeCompte =
             compte.typeCompte === "1" || compte.typeCompte === "2"
               ? "Famille"

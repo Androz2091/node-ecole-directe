@@ -4,8 +4,6 @@ dotenv.config();
 const EcoleDirecte = require("./");
 const session = new EcoleDirecte.Session();
 
-console.log("test");
-
 testAllFunctions();
 
 async function testAllFunctions() {
@@ -14,17 +12,11 @@ async function testAllFunctions() {
     process.env.MDP_ELEVE
   );
 
-  console.log(account);
-
-  console.log("Account fetch");
-
   const notes = await account.fetchNotes();
 
   const notesPremierSemestre = notes.periodes.find(
     (periode) => periode.periode === "1er Trimestre"
   ).ensembleMatieres;
-
-  console.log(notesPremierSemestre);
 
   const moyenneGenerale = notesPremierSemestre.moyenneGenerale;
   const moyenneClasse = notesPremierSemestre.moyenneClasse;
