@@ -13,12 +13,10 @@ module.exports = class Session {
             id.indexOf("&") ? id = id.replace(/&/g, "%26") : id = identifiant 
             mdp.indexOf("&") ? mdp = mdp.replace(/&/g, "%26") : mdp = motdepasse
             const body = "data=" + JSON.stringify({ identifiant: id, motdepasse: mdp })
-            console.log(body);
             const res = await axios.post(
                 "https://api.ecoledirecte.com/v3/login.awp", body
             );
             const data = await res.data
-            console.log(data)
             try {
                 if (!data.token) throw new Error(data.message);
             } catch (e) { console.error(e); return }
