@@ -1,27 +1,35 @@
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 const EcoleDirecte = require("./");
 const session = new EcoleDirecte.Session();
-(async () => {
-    const account = await session.connexion(process.env.ID_ELEVE, process.env.MDP_ELEVE);
 
-    const notes = await account.fetchNotes();
+testAllFunctions();
 
-    const notesPremierSemestre = notes.periodes.find((periode) => periode.periode === '1er Semestre').ensembleMatieres;
-    
-    const moyenneGenerale = notesPremierSemestre.moyenneGenerale;
-    const moyenneClasse = notesPremierSemestre.moyenneClasse;
-    const rang = notesPremierSemestre.rang;
+async function testAllFunctions() {
+  const account = await session.connexion(
+    process.env.ID_ELEVE,
+    process.env.MDP_ELEVE
+  );
 
-    console.log(moyenneGenerale);
-    console.log(moyenneClasse);
-    console.log(rang);
+  const notes = await account.fetchNotes();
 
-    const obtenirMoyenneMatiere = (nomMatiere) => notesPremierSemestre.disciplines.find((dis) => dis.discipline === nomMatiere).moyenne;
+  const notesPremierSemestre = notes.periodes.find(
+    (periode) => periode.periode === "1er Trimestre"
+  ).ensembleMatieres;
 
-    console.log(obtenirMoyenneMatiere('PHYSIQ.CHIMIE&MATHS'));
-    console.log(obtenirMoyenneMatiere('HISTOIRE-GEOGRAPHIE'));
-    console.log(obtenirMoyenneMatiere('ESPAGNOL LV2'));
+  const moyenneGenerale = notesPremierSemestre.moyenneGenerale;
+  const moyenneClasse = notesPremierSemestre.moyenneClasse;
+  const appreciationPP = notesPremierSemestre.appreciationPP;
 
-})()
+  console.log(moyenneGenerale);
+  console.log(moyenneClasse);
+  console.log(appreciationPP);
+
+  const obtenirMoyenneMatiere = (nomMatiere) =>
+    notesPremierSemestre.disciplines.find(
+      (dis) => dis.discipline === nomMatiere
+    ).moyenne;
+
+  console.log(obtenirMoyenneMatiere("HISTOIRE-GEOGRAPHIE"));
+}
