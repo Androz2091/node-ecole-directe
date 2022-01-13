@@ -6,6 +6,7 @@ const EcoleDirecte = require("./");
 const session = new EcoleDirecte.Session();
 const Classe = require("./src/models/Classe.js");
 const Matiere = require("./src/models/Matiere.js");
+const Note = require("./src/models/Note.js");
 
 getAllElements();
 
@@ -30,17 +31,26 @@ async function getAllElements() {
 
   matieres.forEach((matiere) => console.log(matiere.discipline));
 
+  var notesList = [];
+
+  for (var n in notes.notes) {
+    var note = Note.from(notes.notes[n]);
+    notesList[n] = note;
+  }
+
+  notesList.forEach((note) => console.log(note.valeur));
+
   const edt = await account.fetchEmploiDuTemps(
     "2022-01-10 07:00",
     "2022-01-10 18:00"
   );
 
-  var classesInDay = [];
+  var classesInADay = [];
 
   for (var i in edt) {
     var classe = Classe.from(edt[i]);
-    classesInDay[i] = classe;
+    classesInADay[i] = classe;
   }
 
-  classesInDay.forEach((classe) => console.log(classe.matiere));
+  classesInADay.forEach((classe) => console.log(classe.matiere));
 }
